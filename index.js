@@ -66,7 +66,7 @@ conn.sync({ force: true }).then(async () => {
   createUsers()
   createPosts()
 
-  server.listen(3001, () => {
+  server.listen(port, () => {
     console.log(`server listening at ${port}`); // eslint-disable-line no-console
   });
 });
