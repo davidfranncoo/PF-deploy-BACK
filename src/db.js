@@ -1,9 +1,9 @@
 require('dotenv').config();
-const { Sequelize,Op } = require('sequelize');
+const { Sequelize, Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST,DB_NAME,DB_DEPLOY
+  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,DB_DEPLOY
 } = process.env;
 
 
@@ -36,7 +36,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { Comment,Favorite,Post,Rating,Tag,User } = sequelize.models;
+const { Comment, Favorite, Post, Rating, Tag, User, PaymentInfo } = sequelize.models;
 
 // Aca vendrian las relaciones
 //manyToMany
@@ -46,15 +46,19 @@ Tag.belongsToMany(Post, { through: 'PostTag' });
 User.hasMany(Post);
 Post.belongsTo(User);
 
-User.hasMany(Favorite);
-Favorite.belongsTo(User);
+Post.hasMany(Favorite);
+Favorite.belongsTo(Post);
 
 Post.hasMany(Rating);
 Rating.belongsTo(Post);
+Rating.belongsTo(User)
 
 Post.hasMany(Comment);
 Comment.belongsTo(Post);
+Comment.belongsTo(User)
 
+User.hasOne(PaymentInfo)
+PaymentInfo.belongsTo(User)
 
 
 module.exports = {

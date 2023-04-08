@@ -22,7 +22,6 @@ const { conn } = require('./src/db.js');
 const { users, posts, randomDates } = require('./dumbdata.js')
 const port=process.env.PORT || 3001;
 
-
 function createUsers() {
   users.map(async u => {
     let user = await conn.model('User').create({
