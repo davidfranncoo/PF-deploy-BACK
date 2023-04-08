@@ -21,18 +21,7 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const { users, posts, randomDates } = require('./dumbdata.js')
 const port=process.env.PORT || 3001;
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
-const { users, posts, randomDates } = require('./dumbdata.js')
-const portw=process.env.PORT || 3001;
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
-const { users, posts, randomDates } = require('./dumbdata.js')
-const poret=process.env.PORT || 3001;
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
-const { users, posts, randomDates } = require('./dumbdata.js')
-const porets=process.env.PORT || 3001;
+
 
 function createUsers() {
   users.map(async u => {
